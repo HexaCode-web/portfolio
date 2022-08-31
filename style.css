@@ -1,0 +1,472 @@
+html {
+  font-family: "oswald";
+  scroll-behavior: smooth;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15pt;
+  margin: 0;
+  background-color: #c1a5a9;
+  padding: 0;
+}
+#background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+/* ***********************************************
+          HEADER & NAVIGATIONS
+********************************************** */
+.header {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+#Icons {
+  gap: 20px;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+#Icons a {
+  transition: 0.5s;
+}
+#Icons:hover li a {
+  transform: scale(1.5);
+}
+#Icons a:hover {
+  transform: scale(2);
+}
+#icon1 {
+  animation: slideFromLeft 1s ease-in 2.5s both;
+}
+#icon2 {
+  animation: slideFromLeft 1s ease-in 2.6s both;
+}
+#icon3 {
+  animation: slideFromTop 1s ease-in 2.7s both;
+}
+#icon4 {
+  animation: slideFromRight 1s ease-in 2.8s both;
+}
+#icon5 {
+  animation: slideFromRight 1s ease-in 2.9s both;
+}
+
+.NAV {
+  gap: 22%;
+  display: flex;
+  align-items: center;
+  animation: slideFromTop ease-out 1s 2.5s both;
+}
+ul {
+  display: flex;
+  gap: 20px;
+  color: #ff9505;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  transition: 0.5s;
+  list-style: none;
+}
+.NAV a {
+  font-weight: 200;
+  display: block;
+  text-decoration: none;
+  font-size: 2rem;
+  color: #fff;
+  padding: 5px;
+  transition: 0.5s;
+}
+ul:hover li a {
+  transform: scale(1.5);
+  opacity: 0.2;
+  filter: blur(5px);
+}
+.NAV a:hover {
+  color: #e3b505;
+  transform: scale(2);
+  opacity: 1;
+  filter: blur(0);
+}
+/* ***********************************************
+                 SECTIONS
+********************************************** */
+section {
+  margin-bottom: 60px;
+  position: relative;
+  top: 1000px;
+  width: 90vw;
+  height: 100vh;
+  border: 1px solid gold;
+  border-radius: 20px;
+  transition: 0.5s;
+  backdrop-filter: blur(5px);
+}
+.projects,
+#Skills {
+  margin-top: 150px;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+.project p {
+  transform: translate(35px, 0px);
+  position: absolute;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: -1;
+}
+#skills p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.project,
+.skill {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  border: 1px solid gold;
+  backdrop-filter: blur(10px);
+}
+/* ***********************************************
+                 IMAGES
+********************************************** */
+.projects img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.projects img:hover {
+  transform: translatey(50px);
+}
+#Skills img:hover {
+  transform: translatey(100px);
+  opacity: 0%;
+}
+.NAV img {
+  width: 100px;
+}
+#Skills img {
+  width: 200px;
+  height: 200px;
+  transition: 0.5s;
+}
+#Skills .skilltwo img {
+  width: 170px;
+  height: 170px;
+  margin-top: 17px;
+  margin-left: 10px;
+  transition: 0.5s;
+}
+/* ***********************************************
+                 TYPOGRAPGHY
+********************************************** */
+section h1 {
+  font-family: "Merriweather Sans", sans-serif;
+}
+.HeaderText h1,
+.HeaderText h2,
+.HeaderText h3 {
+  margin-top: 60px;
+}
+h1,
+h2,
+h3 {
+  color: #e3b505;
+  font-weight: bold;
+  text-align: center;
+}
+p {
+  font-size: 2.5rem;
+  color: #75dbcd;
+}
+h1 {
+  font-size: 6.5rem;
+  animation: slideFromLeft ease-out 1s both;
+}
+section h2 {
+  font-size: 3rem;
+}
+h2 span {
+  animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
+  font-size: 6.5rem;
+  -webkit-text-stroke: 0;
+}
+span {
+  -webkit-text-stroke: 0.5px black;
+  animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
+  font-size: 3rem;
+}
+h3 {
+  animation: slideFromLeft ease-out 1s 1.5s both;
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+/* ***********************************************
+                 BOOTSTRAP
+********************************************** */
+.container1,
+.container2,
+.container3,
+.container4 {
+  display: none;
+  position: absolute;
+  transform: translate(20px, 15px);
+  z-index: -1;
+  transition: 0.5s;
+  animation: slideFromTopProgress 1s ease-in both;
+}
+.progress {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  background: none;
+  margin: 0 auto;
+  box-shadow: none;
+  position: relative;
+}
+.progress:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 15px solid #f2f5f5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.progress > span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.progress .progress-left {
+  left: 0;
+}
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 15px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+.progress .progress-right {
+  right: 0;
+}
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+  animation: loading-1 1.8s linear forwards;
+}
+.progress .progress-value {
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  color: rgb(250, 245, 245);
+  text-align: center;
+  position: absolute;
+}
+.progress.blue .progress-bar {
+  border-color: #e3b505;
+}
+.progress.blue .progress-left .progress-bar {
+  animation: loading-2 1.5s linear forwards 1.8s;
+}
+@keyframes loading-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+@keyframes loading-2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(144deg);
+    transform: rotate(144deg);
+  }
+}
+@keyframes loading-3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+}
+@keyframes loading-4 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+  }
+}
+@keyframes loading-5 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(126deg);
+    transform: rotate(126deg);
+  }
+}
+@media only screen and (max-width: 990px) {
+  .progress {
+    margin-bottom: 20px;
+  }
+}
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-700px);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+}
+
+@keyframes Title {
+  100%,
+  0% {
+    color: rgb(255, 0, 0);
+  }
+
+  8% {
+    color: rgb(255, 127, 0);
+  }
+
+  16% {
+    color: rgb(255, 255, 0);
+  }
+
+  25% {
+    color: rgb(127, 255, 0);
+  }
+
+  33% {
+    color: rgb(0, 255, 0);
+  }
+
+  41% {
+    color: rgb(0, 255, 127);
+  }
+
+  50% {
+    color: rgb(0, 255, 255);
+  }
+
+  58% {
+    color: rgb(0, 127, 255);
+  }
+
+  66% {
+    color: rgb(0, 0, 255);
+  }
+
+  75% {
+    color: rgb(127, 0, 255);
+  }
+
+  83% {
+    color: rgb(255, 0, 255);
+  }
+
+  91% {
+    color: rgb(255, 0, 127);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(700px);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translatey(700px);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translatey(0px);
+    opacity: 100%;
+  }
+}
+@keyframes slideFromTopProgress {
+  0% {
+    transform: translate(20px, 200px);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translate(20px, 15px);
+    opacity: 100%;
+  }
+}
+
+@media (max-width: 750px) {
+  #myVideo {
+    display: none;
+  }
+
+  body {
+    background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
+    background-size: cover;
+  }
+}

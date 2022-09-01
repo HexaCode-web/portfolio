@@ -30,14 +30,16 @@
       <div class="NAV">
         <img src="logo.png" />
         <ul>
-          <li><a href="#About">About us</a></li>
-          <li><a href="#projects">our projects </a></li>
-          <li><a href="#contact">contact us</a></li>
+          <li>
+            <button onclick="nav()">sadas</button>
+          </li>
+          <li><a href="#project">our projects </a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">contact us</a></li>
         </ul>
       </div>
       <div class="HeaderText">
-        <h1>Set Your Imagination Wild</h1>
+        <h1>Unleash Your Imagination.</h1>
         <h2><span class="brand">HEXACODE</span></h2>
         <h3>FrontEnd Web Developing Company</h3>
         <div id="Icons">
@@ -52,6 +54,7 @@
           /></a>
           <a href="#"><img id="icon4" src="icons8-twitter-75.png" /></a>
           <a href="#"><img id="icon5" src="iconsInsta.png" /></a>
+          <a href="#"><img id="icon6" src="whatsapp.png" /></a>
         </div>
       </div>
     </div>
@@ -59,7 +62,7 @@
       <source src="background.mp4" type="video/mp4" />
     </video>
     <div id="content">
-      <section id="About">
+      <section class="section" id="About">
         <h2>Who are we?</h2>
         <p>
           <span class="brand">HEXACODE</span> is a one man company achieving to
@@ -70,7 +73,8 @@
           <span>satisfaction</span> and your <span>satisfaction</span> only!
         </p>
       </section>
-      <section id="projects">
+
+      <section class="section" id="projects">
         <h2>Explore our previous projects and judge for yourself!</h2>
         <div class="projects">
           <div class="project one">
@@ -106,7 +110,7 @@
             src="icons8-github-75.png"
         /></a>
       </section>
-      <section id="skills">
+      <section class="section" id="skills">
         <h2>
           our developers are branched out in multiple skills that will come
           handy in the website making process!
@@ -187,11 +191,54 @@
         </div>
         <p>and soon more to come! learning never stops!</p>
       </section>
-      <section id="contact">
-        <p>email:</p>
-        <p>phone:</p>
+      <section class="section" id="contact">
+        <p><img src="icons8-mail-50.png" />: marcomark5050@gmail.com</p>
+        <p><img src="phone.icon.png" />: 01227657288</p>
         <p>or fill out the form below and i will reach back to you!</p>
-        <form></form>
+        <form
+          action="https://formspree.io/f/mayknryl"
+          method="POST"
+          name="emailForm"
+          id="my-form"
+        >
+          <div class="Form-Group">
+            <label for="Fname">first name:</label>
+            <input
+              type="text"
+              id="Fname"
+              name="firstname"
+              placeholder="first name"
+            />
+          </div>
+          <div class="Form-Group">
+            <label for="Lname">last name:</label>
+            <input
+              type="text"
+              id="Lname"
+              name="lastName"
+              placeholder="last name"
+            />
+          </div>
+          <div class="Form-Group">
+            <label for="number">phone number:</label>
+            <input
+              type="number"
+              name="phoneNumber"
+              id="number"
+              placeholder="number"
+            />
+          </div>
+          <div class="Form-Group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" placeholder="email" />
+          </div>
+          <div class="Form-Group">
+            <label for="contenttext">additional info:</label>
+            <textarea name="Massage" id="contenttext"></textarea>
+          </div>
+          <input type="submit" id="submit" />
+        </form>
+        <div id="status"></div>
       </section>
     </div>
     <script src="main.js"></script>

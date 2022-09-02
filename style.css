@@ -43,48 +43,6 @@ body {
   z-index: 1;
 }
 
-#Icons {
-  gap: 20px;
-  justify-content: center;
-  display: flex;
-  width: 100%;
-}
-
-#Icons button {
-  transition: 0.5s;
-}
-
-#Icons:hover li button {
-  transform: scale(1.5);
-}
-
-#Icons button:hover {
-  transform: scale(2);
-}
-
-#icon1 {
-  animation: slideFromLeft 1s ease-in 2.5s both;
-}
-
-#icon2 {
-  animation: slideFromLeft 1s ease-in 2.6s both;
-}
-
-#icon3 {
-  animation: slideFromTop 1s ease-in 2.7s both;
-}
-
-#icon4 {
-  animation: slideFromRight 1s ease-in 2.8s both;
-}
-
-#icon5 {
-  animation: slideFromRight 1s ease-in 2.9s both;
-}
-#icon6 {
-  animation: slideFromRight 1s ease-in 2.9s both;
-}
-
 .NAV {
   position: fixed;
   z-index: 1;
@@ -135,6 +93,47 @@ ul:hover li button {
   filter: blur(0);
 }
 
+#Icons {
+  gap: 20px;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+#Icons a {
+  transition: 0.5s;
+}
+
+#Icons:hover li a {
+  transform: scale(1.5);
+}
+
+#Icons a:hover {
+  transform: scale(2);
+}
+
+#icon1 {
+  animation: slideFromLeft 1s ease-in 2.5s both;
+}
+
+#icon2 {
+  animation: slideFromLeft 1s ease-in 2.6s both;
+}
+
+#icon3 {
+  animation: slideFromTop 1s ease-in 2.7s both;
+}
+
+#icon4 {
+  animation: slideFromRight 1s ease-in 2.8s both;
+}
+
+#icon5 {
+  animation: slideFromRight 1s ease-in 2.9s both;
+}
+#icon6 {
+  animation: slideFromRight 1s ease-in 2.9s both;
+}
 /* ***********************************************
                  SECTIONS
 ********************************************** */
@@ -151,14 +150,14 @@ section {
   backdrop-filter: blur(5px);
   animation: wide 0.7s ease-out both;
 }
-@keyframes wide {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 90vw;
-  }
+/* form section */
+#contact {
+  height: 110vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
 }
+/* section skill/projects */
 .projects,
 #Skills {
   margin-top: 150px;
@@ -166,20 +165,7 @@ section {
   padding: 15px;
   justify-content: space-between;
 }
-
-.project p {
-  transform: translate(35px, 0px);
-  position: absolute;
-  font-size: 1.5rem;
-  text-align: center;
-  z-index: -1;
-}
-
-#skills p {
-  font-size: 1.5rem;
-  text-align: center;
-}
-
+/* indviual skill/project */
 .project,
 .skill {
   width: 200px;
@@ -188,39 +174,7 @@ section {
   border: 1px solid gold;
   backdrop-filter: blur(10px);
 }
-#contact {
-  height: 110vh;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-}
-#status {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  transition: 0.5s;
-}
-@keyframes status {
-  0% {
-    opacity: 0;
-    pointer-events: all;
-  }
-  90% {
-    opacity: 1;
-    pointer-events: none;
-  }
-  100% {
-    opacity: 0;
-    pointer-events: all;
-  }
-}
-.success {
-  color: #75dbcd;
-  animation: status 4s ease forwards;
-}
-.failed {
-  color: red;
-  animation: status 4s ease forwards;
-}
+/* inside the form section */
 form {
   overflow-y: auto;
   display: flex;
@@ -234,22 +188,9 @@ form {
 form::-webkit-scrollbar {
   display: none;
 }
+/* each form item */
 .Form-Group {
   width: 70%;
-}
-input {
-  backdrop-filter: blur(30px);
-  color: #75dbcd;
-  border: none;
-  border-left: 2px solid #fedb39;
-  border-right: 2px solid #fedb39;
-  background-color: transparent;
-  display: inline-block;
-  border-bottom: 1.5px solid #fedb39;
-  border-radius: 4px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 30px;
 }
 input[type="submit"] {
   color: #fedb39;
@@ -276,36 +217,46 @@ textarea {
   border-right: 2px solid #fedb39;
   border-bottom: 1.5px solid #fedb39;
 }
-
+#status {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  transition: 0.5s;
+}
+.success {
+  color: #75dbcd;
+  animation: status 4s ease forwards;
+}
+.failed {
+  color: red;
+  animation: status 4s ease forwards;
+}
 /* ***********************************************
                  IMAGES
 ********************************************** */
+.NAV img {
+  width: 60px;
+}
+/* each project img */
 .projects img {
   width: 200px;
   height: 200px;
   border-radius: 20px;
   transition: 0.5s;
 }
-
 .projects img:hover {
   transform: translatey(50px);
 }
-
-#Skills img:hover {
-  transform: translatey(100px);
-  opacity: 0%;
-}
-
-.NAV img {
-  width: 60px;
-}
-
+/* each skill img */
 #Skills img {
   width: 200px;
   height: 200px;
   transition: 0.5s;
 }
-
+#Skills img:hover {
+  transform: translatey(100px);
+  opacity: 0%;
+}
+/* speical case skill number 2 */
 #Skills .skilltwo img {
   width: 170px;
   height: 170px;
@@ -313,24 +264,10 @@ textarea {
   margin-left: 10px;
   transition: 0.5s;
 }
-
 /* ***********************************************
                  TYPOGRAPGHY
 ********************************************** */
-section h2 {
-  animation: slideFromLeft ease-out 1s 0.5s both;
-  font-family: "Merriweather Sans", sans-serif;
-}
-section p {
-  animation: slideFromRight ease-out 1s 0.5s both;
-}
-
-.HeaderText h1,
-.HeaderText h2,
-.HeaderText h3 {
-  margin-top: 60px;
-}
-
+/* GENERAL LAYOUT */
 h1,
 h2,
 h3 {
@@ -338,49 +275,81 @@ h3 {
   font-weight: bold;
   text-align: center;
 }
-label {
-  font-weight: bold;
-
-  font-size: 1.3rem;
-  color: #75dbcd;
+h1 {
+  font-size: 6.5rem;
+  animation: slideFromLeft ease-out 1s both;
+}
+h3 {
+  animation: slideFromLeft ease-out 1s 1.5s both;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 p {
   font-size: 2.5rem;
   color: #75dbcd;
 }
-#contact p {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-h1 {
-  font-size: 6.5rem;
-  animation: slideFromLeft ease-out 1s both;
-}
-
-section h2 {
+span {
+  -webkit-text-stroke: 0.5px black;
+  animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
   font-size: 3rem;
 }
-.projects p {
-  animation: none;
+label {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #75dbcd;
+}
+input {
+  backdrop-filter: blur(30px);
+  color: #75dbcd;
+  border: none;
+  border-left: 2px solid #fedb39;
+  border-right: 2px solid #fedb39;
+  background-color: transparent;
+  display: inline-block;
+  border-bottom: 1.5px solid #fedb39;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+}
+/* ---------------------- */
+
+.HeaderText h1,
+.HeaderText h2,
+.HeaderText h3 {
+  margin-top: 60px;
 }
 h2 span {
   animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
   font-size: 6.5rem;
   -webkit-text-stroke: 0;
 }
-
-span {
-  -webkit-text-stroke: 0.5px black;
-  animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
+section h2 {
+  animation: slideFromLeft ease-out 1s 0.5s both;
+  font-family: "Merriweather Sans", sans-serif;
   font-size: 3rem;
 }
-
-h3 {
-  animation: slideFromLeft ease-out 1s 1.5s both;
-  font-size: 2rem;
-  margin-bottom: 20px;
+section p {
+  animation: slideFromRight ease-out 1s 0.5s both;
 }
-
+.projects p {
+  animation: none;
+}
+.project p {
+  transform: translate(35px, 0px);
+  position: absolute;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: -1;
+}
+#skills p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+#contact p {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 /* ***********************************************
                  BOOTSTRAP
 ********************************************** */
@@ -546,6 +515,7 @@ h3 {
   }
 }
 
+/* ANIMATIONS */
 @keyframes slideFromLeft {
   0% {
     transform: translateX(-700px);
@@ -654,14 +624,80 @@ h3 {
     opacity: 100%;
   }
 }
-
-@media (max-width: 750px) {
-  #myVideo {
+@keyframes wide {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 90vw;
+  }
+}
+@keyframes status {
+  0% {
+    opacity: 0;
+    pointer-events: all;
+  }
+  90% {
+    opacity: 1;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: all;
+  }
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+  body {
+    background-image: url(backgroundPhone1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 3500px;
+  }
+  .header {
+    width: 450px;
+  }
+  #background {
     display: none;
   }
-
-  body {
-    background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
-    background-size: cover;
+  .NAV {
+    gap: 30px;
+  }
+  #Icons img {
+    width: 70%;
+  }
+  #Icons {
+    max-width: 300px;
+    margin-left: 70px;
+    flex-wrap: wrap;
+  }
+  .projects,
+  #Skills {
+    row-gap: 20px;
+    max-width: 400px;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+  .projects img,
+  .project,
+  .skill {
+    width: 150px;
+    height: 150px;
+  }
+  #Skills img {
+    width: 150px;
+    height: 150px;
+  }
+  #Skills .skilltwo img {
+    width: 120px;
+    height: 120px;
+  }
+  .progress {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
   }
 }

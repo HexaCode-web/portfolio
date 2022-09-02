@@ -1,6 +1,7 @@
 const HTML = document.querySelector(".skillone");
 const progress90 = document.querySelector(".container1");
-
+let isScrolling;
+const navBar = document.querySelector(".NAV");
 const CSS = document.querySelector(".skilltwo");
 const progress80 = document.querySelector(".container2");
 
@@ -44,10 +45,17 @@ Creative.addEventListener("mouseout", function () {
 window.addEventListener("scroll", function () {
   reveal();
 });
-function nav() {
-  sec1.scrollIntoView({ behavior: "smooth" });
+document.addEventListener("scroll", function () {
+  window.clearTimeout(isScrolling);
+  isScrolling = setTimeout(function () {
+    navBar.style.display = "none";
+  }, 2000);
+});
+function nav(num) {
+  window.scrollTo(0, num);
 }
 function reveal() {
+  navBar.style.display = "flex";
   const sec1Pos = sec1.getBoundingClientRect().top;
   const sec2Pos = sec2.getBoundingClientRect().top;
   const sec3Pos = sec3.getBoundingClientRect().top;

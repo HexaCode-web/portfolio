@@ -50,15 +50,15 @@ body {
   width: 100%;
 }
 
-#Icons a {
+#Icons button {
   transition: 0.5s;
 }
 
-#Icons:hover li a {
+#Icons:hover li button {
   transform: scale(1.5);
 }
 
-#Icons a:hover {
+#Icons button:hover {
   transform: scale(2);
 }
 
@@ -86,10 +86,14 @@ body {
 }
 
 .NAV {
-  gap: 22%;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  gap: 30%;
   display: flex;
   align-items: center;
-  animation: slideFromTop ease-out 1s 2.5s both;
+  animation: slideFromTopNAV ease-out 0.5s both;
 }
 
 ul {
@@ -106,23 +110,25 @@ li {
   list-style: none;
 }
 
-.NAV a {
+.NAV button {
   font-weight: 200;
   display: block;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
+  background-color: transparent;
+  border: none;
   padding: 5px;
   transition: 0.5s;
 }
 
-ul:hover li a {
+ul:hover li button {
   transform: scale(1.5);
   opacity: 0.2;
   filter: blur(5px);
 }
 
-.NAV a:hover {
+.NAV button:hover {
   color: #e3b505;
   transform: scale(2);
   opacity: 1;
@@ -291,7 +297,7 @@ textarea {
 }
 
 .NAV img {
-  width: 100px;
+  width: 60px;
 }
 
 #Skills img {
@@ -614,7 +620,17 @@ h3 {
     opacity: 100%;
   }
 }
+@keyframes slideFromTopNAV {
+  0% {
+    transform: translatey(-500px);
+    opacity: 0%;
+  }
 
+  100% {
+    transform: translatey(0px);
+    opacity: 100%;
+  }
+}
 @keyframes slideFromTop {
   0% {
     transform: translatey(700px);

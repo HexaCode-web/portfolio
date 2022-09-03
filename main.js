@@ -1,6 +1,8 @@
 const HTML = document.querySelector(".skillone");
 const progress90 = document.querySelector(".container1");
 let isScrolling;
+const width = [0, 600, 900];
+let clientWidth = window.innerWidth;
 const navBar = document.querySelector(".NAV");
 const CSS = document.querySelector(".skilltwo");
 const progress80 = document.querySelector(".container2");
@@ -42,18 +44,27 @@ Creative.addEventListener("mouseover", function () {
 Creative.addEventListener("mouseout", function () {
   progress85.style.display = "none";
 });
-window.addEventListener("scroll", function () {
-  reveal();
-});
+function nav(num) {
+  window.scrollTo(0, num);
+}
 document.addEventListener("scroll", function () {
   window.clearTimeout(isScrolling);
   isScrolling = setTimeout(function () {
     navBar.style.display = "none";
   }, 2000);
 });
-function nav(num) {
-  window.scrollTo(0, num);
+window.onload = resize;
+window.onresize = resize;
+function resize() {
+  clientWidth = window.innerWidth;
 }
+window.addEventListener("scroll", function () {
+  if (clientWidth > width[2]) {
+    reveal();
+  } else {
+    revealMOB();
+  }
+});
 function reveal() {
   navBar.style.display = "flex";
   const sec1Pos = sec1.getBoundingClientRect().top;
@@ -83,6 +94,36 @@ function reveal() {
     sec4.style.display = "none";
   }
 }
+
+function revealMOB() {
+  const sec1Pos = sec1.getBoundingClientRect().top;
+  const sec2Pos = sec2.getBoundingClientRect().top;
+  const sec3Pos = sec3.getBoundingClientRect().top;
+  const sec4Pos = sec4.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+  const number = 300;
+  if (sec1Pos + number < windowHeight && sec1Pos > -200) {
+    sec1.classList.add("active");
+  } else {
+    sec1.classList.remove("active");
+  }
+  if (sec2Pos + number < windowHeight && sec2Pos > -200) {
+    sec2.classList.add("active");
+  } else {
+    sec2.classList.remove("active");
+  }
+  if (sec3Pos + number < windowHeight && sec3Pos > -200) {
+    sec3.classList.add("active");
+  } else {
+    sec3.classList.remove("active");
+  }
+  if (sec4Pos + number < windowHeight && sec4Pos > -200) {
+    sec4.classList.add("active");
+  } else {
+    sec4.classList.remove("active");
+  }
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   // get the form elements defined in your form HTML above
 

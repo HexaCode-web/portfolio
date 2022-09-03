@@ -31,13 +31,16 @@ body {
   z-index: -1;
 }
 .active {
-  display: block;
+  margin: 0;
+  border: 2px solid gold;
+  box-shadow: 0 0 10px #9ecaed;
+  backdrop-filter: blur(50px);
+  width: 100vw;
 }
 /* ***********************************************
           HEADER & NAVIGATIONS
 ********************************************** */
 .header {
-  position: absolute;
   width: 100%;
   height: 100vh;
   z-index: 1;
@@ -125,7 +128,7 @@ ul:hover li button {
 }
 
 #icon4 {
-  animation: slideFromRight 1s ease-in 2.8s both;
+  animation: slideFromTop 1s ease-in 2.8s both;
 }
 
 #icon5 {
@@ -141,10 +144,8 @@ section {
   display: none;
   font-family: oswald;
   margin-bottom: 60px;
-  position: relative;
-  top: 1000px;
-  width: 90vw;
-  height: 100vh;
+  width: 90%;
+  height: 110vh;
   border: 1px solid gold;
   border-radius: 20px;
   backdrop-filter: blur(5px);
@@ -152,10 +153,12 @@ section {
 }
 /* form section */
 #contact {
+  width: 90%;
   height: 110vh;
   display: none;
   flex-direction: column;
   align-items: center;
+  animation: wide 0.7s ease-out both;
 }
 /* section skill/projects */
 .projects,
@@ -276,6 +279,7 @@ h3 {
   text-align: center;
 }
 h1 {
+  text-shadow: 2px 2px 8px #ff0000;
   font-size: 6.5rem;
   animation: slideFromLeft ease-out 1s both;
 }
@@ -286,6 +290,7 @@ h3 {
 }
 p {
   font-size: 2.5rem;
+  text-shadow: 2px 2px 8px #ff0000;
   color: #75dbcd;
 }
 span {
@@ -296,11 +301,12 @@ span {
 label {
   font-weight: bold;
   font-size: 1.3rem;
-  color: #75dbcd;
+  color: #e3b505;
+  text-shadow: 2px 2px 8px #ff0000;
 }
 input {
   backdrop-filter: blur(30px);
-  color: #75dbcd;
+  color: white;
   border: none;
   border-left: 2px solid #fedb39;
   border-right: 2px solid #fedb39;
@@ -646,19 +652,18 @@ section p {
     pointer-events: all;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   html {
     font-size: 10px;
   }
   body {
-    background-image: url(backgroundPhone1.jpg);
-    background-repeat: no-repeat;
+    max-height: 2500px;
+    background-image: url(images/backgroundPhone2.jpeg);
     background-position: center;
-    background-size: cover;
-    height: 3500px;
   }
   .header {
     width: 450px;
+    margin-bottom: 60px;
   }
   #background {
     display: none;
@@ -673,6 +678,24 @@ section p {
     max-width: 300px;
     margin-left: 70px;
     flex-wrap: wrap;
+  }
+  @keyframes expand {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  section,
+  #contact {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: none;
+    transition: 0.5s;
   }
   .projects,
   #Skills {

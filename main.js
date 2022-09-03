@@ -1,21 +1,29 @@
 const HTML = document.querySelector(".skillone");
 const progress90 = document.querySelector(".container1");
 let isScrolling;
-const width = [0, 600, 900];
-let clientWidth = window.innerWidth;
+const clientWidth = window.matchMedia("(max-width: 570px)");
 const navBar = document.querySelector(".NAV");
 const CSS = document.querySelector(".skilltwo");
 const progress80 = document.querySelector(".container2");
-
 const JS = document.querySelector(".skillthree");
 const progress70 = document.querySelector(".container3");
-
 const Creative = document.querySelector(".skillfour");
 const progress85 = document.querySelector(".container4");
 const sec1 = document.querySelector("#About");
 const sec2 = document.querySelector("#projects");
 const sec3 = document.querySelector("#skills");
 const sec4 = document.querySelector("#contact");
+window.addEventListener(
+  "scroll",
+  function () {
+    if (clientWidth.matches) {
+      revealMOB();
+    } else {
+      reveal();
+    }
+  },
+  true
+);
 
 HTML.addEventListener("mouseover", function () {
   progress90.style.display = "block";
@@ -53,19 +61,9 @@ document.addEventListener("scroll", function () {
     navBar.style.display = "none";
   }, 2000);
 });
-window.onload = resize;
-window.onresize = resize;
-function resize() {
-  clientWidth = window.innerWidth;
-}
-window.addEventListener("scroll", function () {
-  if (clientWidth > width[2]) {
-    reveal();
-  } else {
-    revealMOB();
-  }
-});
+
 function reveal() {
+  console.log("Pc");
   navBar.style.display = "flex";
   const sec1Pos = sec1.getBoundingClientRect().top;
   const sec2Pos = sec2.getBoundingClientRect().top;
@@ -96,6 +94,7 @@ function reveal() {
 }
 
 function revealMOB() {
+  navBar.style.display = "flex";
   const sec1Pos = sec1.getBoundingClientRect().top;
   const sec2Pos = sec2.getBoundingClientRect().top;
   const sec3Pos = sec3.getBoundingClientRect().top;

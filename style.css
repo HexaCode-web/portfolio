@@ -36,6 +36,7 @@ body {
   box-shadow: 0 0 10px #9ecaed;
   backdrop-filter: blur(50px);
   width: 100vw;
+  height: 110vh;
 }
 /* ***********************************************
           HEADER & NAVIGATIONS
@@ -652,6 +653,14 @@ section p {
     pointer-events: all;
   }
 }
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @media (max-width: 500px) {
   html {
     font-size: 10px;
@@ -678,14 +687,7 @@ section p {
     margin-left: 70px;
     flex-wrap: wrap;
   }
-  @keyframes expand {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+
   section,
   #contact {
     margin-left: 15px;

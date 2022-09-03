@@ -52,8 +52,12 @@ Creative.addEventListener("mouseover", function () {
 Creative.addEventListener("mouseout", function () {
   progress85.style.display = "none";
 });
-function nav(num) {
-  window.scrollTo(0, num);
+function nav(num, section) {
+  if (clientWidth.matches) {
+    section.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.scrollTo(0, num);
+  }
 }
 document.addEventListener("scroll", function () {
   window.clearTimeout(isScrolling);

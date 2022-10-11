@@ -343,10 +343,8 @@ section p {
   animation: none;
 }
 .project p {
-  transform: translate(35px, 0px);
   position: absolute;
   font-size: 1.5rem;
-  text-align: center;
   z-index: -1;
 }
 #skills p {

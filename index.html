@@ -33,15 +33,18 @@
         <img src="images/logo.png" />
         <ul>
           <li><button onclick="nav(600,About)">About us</button></li>
-          <li><button onclick="nav(1300,projects)">Projects</button></li>
-          <li><button onclick="nav(2000,skills)">Skills</button></li>
-          <li><button onclick="nav(2700,contact)">Contact US</button></li>
+          <li>
+            <button onclick="nav(1350,cert)">Certificates</button>
+          </li>
+          <li><button onclick="nav(2100,projects)">Projects</button></li>
+          <li><button onclick="nav(2900,skills)">Skills</button></li>
+          <li><button onclick="nav(3650,contact)">Contact US</button></li>
         </ul>
       </div>
       <div class="HeaderText">
         <h1>Unleash Your Imagination.</h1>
         <h2><span class="brand">HEXACODE</span></h2>
-        <h3>FrontEnd Web Developing Company</h3>
+        <h3>Web <span class="title"></span></h3>
         <div id="Icons">
           <a target="_blank" href="https://www.facebook.com/marco.khairy.3/"
             ><img id="icon1" src="images/iconsfacebook.png"
@@ -66,7 +69,6 @@
         </div>
       </div>
     </div>
-
     <div id="content">
       <section class="section" id="About">
         <h2>Who are we?</h2>
@@ -76,15 +78,28 @@
           Marco Khairy hes a 22 year old guy from Cairo Egypt trying to reach
           byond the Imagination and giving you the best website possible!<br />
           in a world full of web Developers we have only one concern! your
-          <span>satisfaction</span> and your <span>satisfaction</span> only!
+          <span class="brand">satisfaction</span> and your
+          <span class="brand">satisfaction</span> only!
         </p>
       </section>
-
+      <section class="section" id="cert">
+        <h1>our certificates!</h1>
+        <div class="certificates">
+          <button class="cert one" id="cert1">
+            <p>Professional</p>
+            <img src="images/cerfPROF.jpg" />
+          </button>
+          <button class="cert two" id="cert2">
+            <p>Challenger</p>
+            <img src="images/cerfCHAL.jpg" />
+          </button>
+        </div>
+      </section>
       <section class="section" id="projects">
         <h2>Explore our previous projects and judge for yourself!</h2>
         <div class="projects">
           <div class="project one">
-            <p>landing page</p>
+            <p>Landing page</p>
             <a
               href="https://hexacode-web.github.io/huddle-landing-page-with-curved-sections/"
               target="”_blank”"
@@ -92,7 +107,7 @@
             /></a>
           </div>
           <div class="project two">
-            <p>landing page</p>
+            <p>Landing page</p>
             <a
               href=" https://hexacode-web.github.io/clipboard-landing-page/"
               target="”_blank”"
@@ -100,7 +115,7 @@
             /></a>
           </div>
           <div class="project three">
-            <p>blackJack game</p>
+            <p>BlackJack game</p>
             <a
               href="https://hexacode-web.github.io/blackJack-game/"
               target="”_blank”"
@@ -108,14 +123,31 @@
             /></a>
           </div>
           <div class="project four">
-            <p>movie streaming website</p>
+            <p>Movie website</p>
             <a
               href="https://primemoviee.netlify.app/index.html"
               target="”_blank”"
               ><img src="images/Card.jpg"
             /></a>
           </div>
+          <div class="project five">
+            <p>Landing page</p>
+            <a
+              href="https://hexacode-web.github.io/blogr-landing-page/"
+              target="”_blank”"
+              ><img src="images/project 5.jpg"
+            /></a>
+          </div>
+          <div class="project six">
+            <p>Product page</p>
+            <a
+              href="https://hexacode-web.github.io/ecommerce-product-page-main/"
+              target="”_blank”"
+              ><img src="images/project 6.jpg"
+            /></a>
+          </div>
         </div>
+        <h2>And many more on the github page!</h2>
         <a href="https://github.com/HexaCode-web"
           ><img
             id="icon2"
@@ -130,7 +162,7 @@
         </h2>
         <div id="Skills">
           <div class="skillone skill">
-            <div class="container1">
+            <div class="container">
               <div class="row">
                 <div class="col-md-3 col-sm-6">
                   <div class="progress blue">
@@ -148,7 +180,7 @@
             <img src="images/HTML.png" />
           </div>
           <div class="skilltwo skill">
-            <div class="container2">
+            <div class="container">
               <div class="row">
                 <div class="col-md-3 col-sm-6">
                   <div class="progress blue">
@@ -166,7 +198,7 @@
             <img class="skillTwoImg" src="images/css4.png" />
           </div>
           <div class="skillthree skill">
-            <div class="container3">
+            <div class="container">
               <div class="row">
                 <div class="col-md-3 col-sm-6">
                   <div class="progress blue">
@@ -184,7 +216,7 @@
             <img src="images/javaScript.png" />
           </div>
           <div class="skillfour skill">
-            <div class="container4">
+            <div class="container">
               <div class="row">
                 <div class="col-md-3 col-sm-6">
                   <div class="progress blue">
@@ -254,6 +286,7 @@
         <div id="status"></div>
       </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="main.js"></script>
   </body>
 </html>

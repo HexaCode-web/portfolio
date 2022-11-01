@@ -8,7 +8,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  height: 600vh;
+  height: 700vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32,6 +32,7 @@ body {
 }
 .active {
   margin: 0;
+  margin-bottom: 50px;
   border: 2px solid gold;
   box-shadow: 0 0 10px #9ecaed;
   backdrop-filter: blur(50px);
@@ -52,7 +53,7 @@ body {
   z-index: 1;
   width: 100%;
   backdrop-filter: blur(10px);
-  gap: 30%;
+  gap: 25%;
   display: flex;
   align-items: center;
   animation: slideFromTopNAV ease-out 0.5s both;
@@ -133,10 +134,10 @@ ul:hover li button {
 }
 
 #icon5 {
-  animation: slideFromRight 1s ease-in 2.9s both;
+  animation: slideFromRight2 1s ease-in 2.9s both;
 }
 #icon6 {
-  animation: slideFromRight 1s ease-in 2.9s both;
+  animation: slideFromRight2 1s ease-in 2.9s both;
 }
 /* ***********************************************
                  SECTIONS
@@ -145,12 +146,25 @@ section {
   display: none;
   font-family: oswald;
   margin-bottom: 60px;
+  padding: 20px;
   width: 90%;
   height: 110vh;
   border: 1px solid gold;
   border-radius: 20px;
   backdrop-filter: blur(5px);
   animation: wide 0.7s ease-out both;
+}
+.blackout {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  z-index: 100;
+  backdrop-filter: blur(150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: appearLate 1s ease-out both;
 }
 /* form section */
 #contact {
@@ -163,20 +177,53 @@ section {
 }
 /* section skill/projects */
 .projects,
-#Skills {
+#Skills,
+.certificates {
   margin-top: 150px;
   display: flex;
   padding: 15px;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+.projects {
+  /* justify-content: center; */
+  gap: 150px;
+  row-gap: 50px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 /* indviual skill/project */
 .project,
-.skill {
+.skill,
+.cert {
   width: 200px;
   height: 200px;
   border-radius: 20px;
   border: 1px solid gold;
   backdrop-filter: blur(10px);
+  animation: appearLate 1s ease-out 0.5s both;
+}
+@keyframes appearLate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.cert {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  transition: all 0.5s;
+}
+
+.certificates {
+  justify-content: center;
+  gap: 50px;
+}
+.cert img:hover {
+  transform: translateY(50px);
 }
 /* inside the form section */
 form {
@@ -220,6 +267,7 @@ textarea {
   border-left: 2px solid #fedb39;
   border-right: 2px solid #fedb39;
   border-bottom: 1.5px solid #fedb39;
+  outline: none;
 }
 #status {
   margin-top: 10px;
@@ -241,7 +289,8 @@ textarea {
   width: 60px;
 }
 /* each project img */
-.projects img {
+.projects img,
+.cert img {
   width: 200px;
   height: 200px;
   border-radius: 20px;
@@ -256,7 +305,7 @@ textarea {
   height: 200px;
   transition: 0.5s;
 }
-#Skills img:hover {
+.skill:hover img {
   transform: translatey(100px);
   opacity: 0%;
 }
@@ -285,7 +334,7 @@ h1 {
   animation: slideFromLeft ease-out 1s both;
 }
 h3 {
-  animation: slideFromLeft ease-out 1s 1.5s both;
+  animation: appearLate ease-out 1s 1.5s both;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -294,9 +343,9 @@ p {
   text-shadow: 2px 2px 8px #ff0000;
   color: #75dbcd;
 }
-span {
+.brand {
   -webkit-text-stroke: 0.5px black;
-  animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
+  animation: slideFromRight2 ease-out 1s 1s both, Title 2.5s linear infinite;
   font-size: 3rem;
 }
 label {
@@ -318,6 +367,7 @@ input {
   box-sizing: border-box;
   width: 100%;
   height: 30px;
+  outline: none;
 }
 /* ---------------------- */
 
@@ -327,28 +377,31 @@ input {
   margin-top: 60px;
 }
 h2 span {
-  animation: slideFromRight ease-out 1s 1s both, Title 2.5s linear infinite;
+  animation: slideFromRight2 ease-out 1s 1s both, Title 2.5s linear infinite;
   font-size: 6.5rem;
   -webkit-text-stroke: 0;
 }
 section h2 {
   animation: slideFromLeft ease-out 1s 0.5s both;
   font-family: "Merriweather Sans", sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 section p {
-  animation: slideFromRight ease-out 1s 0.5s both;
+  animation: slideFromRight2 ease-out 1s 0.5s both;
 }
-.projects p {
+.projects p,
+.cert p {
   animation: none;
 }
-.project p {
+.project p,
+.cert p {
+  left: 25%;
   position: absolute;
   font-size: 1.5rem;
   z-index: -1;
 }
 #skills p {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   text-align: center;
 }
 #contact p {
@@ -358,10 +411,7 @@ section p {
 /* ***********************************************
                  BOOTSTRAP
 ********************************************** */
-.container1,
-.container2,
-.container3,
-.container4 {
+.container {
   display: none;
   position: absolute;
   transform: translate(20px, 15px);
@@ -515,8 +565,50 @@ section p {
 }
 
 @media only screen and (max-width: 990px) {
+  body {
+    height: 890vh;
+  }
+  .NAV {
+    gap: 15%;
+  }
+  .header {
+    height: 135vh;
+  }
+  .certificates {
+    margin-top: 50px;
+  }
+  #projects {
+    height: 160vh;
+  }
+  .projects {
+    margin-top: 50px;
+    gap: 10px;
+    row-gap: 50px;
+  }
+  #Skills {
+    margin-top: 50px;
+    justify-content: space-around;
+    gap: 120px;
+    row-gap: 50px;
+  }
+  #skills {
+    height: 160vh;
+  }
   .progress {
     margin-bottom: 20px;
+  }
+  #contact {
+    height: 145vh;
+    margin-bottom: 10px;
+  }
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    padding-right: 35px;
+    padding-left: 0px;
   }
 }
 
@@ -584,12 +676,11 @@ section p {
   }
 }
 
-@keyframes slideFromRight {
+@keyframes slideFromRight2 {
   0% {
     transform: translateX(700px);
     opacity: 0%;
   }
-
   100% {
     transform: translateX(0px);
     opacity: 100%;
@@ -669,13 +760,16 @@ section p {
   }
   .header {
     width: 450px;
-    margin-bottom: 60px;
   }
   #background {
     display: none;
   }
   .NAV {
-    gap: 30px;
+    font-size: 9px;
+    gap: 20px;
+  }
+  .NAV ul {
+    gap: 10px;
   }
   #Icons img {
     width: 70%;
@@ -685,7 +779,21 @@ section p {
     margin-left: 70px;
     flex-wrap: wrap;
   }
+  .certificates {
+    row-gap: 60px;
+  }
+  #cert {
+    height: 146vh;
+  }
 
+  section h2 {
+    font-size: 1.8rem;
+  }
+  .cert p,
+  .projects p {
+    left: 13%;
+    font-size: 20px;
+  }
   section,
   #contact {
     margin-left: 15px;
@@ -698,10 +806,14 @@ section p {
   }
   .projects,
   #Skills {
-    row-gap: 20px;
+    gap: 67px;
+    row-gap: 60px;
     max-width: 400px;
     flex-wrap: wrap;
     margin-top: 0;
+  }
+  #skills {
+    height: 112vh;
   }
   .projects img,
   .project,
@@ -721,5 +833,14 @@ section p {
     width: 100px;
     height: 100px;
     line-height: 100px;
+  }
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    padding-right: 44px;
+    padding-left: 0px;
   }
 }

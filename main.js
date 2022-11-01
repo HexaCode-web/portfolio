@@ -1,21 +1,39 @@
-const HTML = document.querySelector(".skillone");
-const progress90 = document.querySelector(".container1");
 let isScrolling;
 const clientWidth = window.matchMedia("(max-width: 570px)");
 const navBar = document.querySelector(".NAV");
-const CSS = document.querySelector(".skilltwo");
-const progress80 = document.querySelector(".container2");
-const JS = document.querySelector(".skillthree");
-const progress70 = document.querySelector(".container3");
-const Creative = document.querySelector(".skillfour");
-const progress85 = document.querySelector(".container4");
-const sec1 = document.querySelector("#About");
-const sec2 = document.querySelector("#projects");
-const sec3 = document.querySelector("#skills");
-const sec4 = document.querySelector("#contact");
+const sectionsList = Array.from(document.querySelectorAll(".section"));
+const skillsList = Array.from(document.querySelectorAll(".skill"));
+const progressList = Array.from(document.querySelectorAll(".container"));
+const overlay = document.createElement("div");
+const cert1 = document.querySelector("#cert1");
+const cert2 = document.querySelector("#cert2");
+const img = document.createElement("img");
+overlay.appendChild(img);
+overlay.classList.add("blackout");
+const nav = (num, section) => {
+  if (clientWidth.matches) {
+    section.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.scrollTo(0, num);
+  }
+};
+cert1.addEventListener("click", () => {
+  document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+  img.src = "images/cerfPROF.jpg";
+});
+cert2.addEventListener("click", () => {
+  document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+  img.src = "images/cerfCHAL.jpg";
+});
+overlay.addEventListener("click", () => {
+  document.body.removeChild(overlay);
+  document.body.style.overflow = "auto";
+});
 window.addEventListener(
   "scroll",
-  function () {
+  () => {
     if (clientWidth.matches) {
       revealMOB();
     } else {
@@ -24,132 +42,83 @@ window.addEventListener(
   },
   true
 );
-
-HTML.addEventListener("mouseover", function () {
-  progress90.style.display = "block";
+skillsList.forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    progressList[skillsList.indexOf(element)].style.display = "block";
+  });
+  element.addEventListener("mouseout", () => {
+    progressList[skillsList.indexOf(element)].style.display = "none";
+  });
 });
-HTML.addEventListener("mouseout", function () {
-  progress90.style.display = "none";
+document.addEventListener("scroll", () => {
+  hideNav();
 });
-
-CSS.addEventListener("mouseover", function () {
-  progress80.style.display = "block";
-});
-CSS.addEventListener("mouseout", function () {
-  progress80.style.display = "none";
-});
-Creative;
-JS.addEventListener("mouseover", function () {
-  progress70.style.display = "block";
-});
-JS.addEventListener("mouseout", function () {
-  progress70.style.display = "none";
-});
-
-Creative.addEventListener("mouseover", function () {
-  progress85.style.display = "block";
-});
-Creative.addEventListener("mouseout", function () {
-  progress85.style.display = "none";
-});
-function nav(num, section) {
-  if (clientWidth.matches) {
-    section.scrollIntoView({ behavior: "smooth" });
-  } else {
-    window.scrollTo(0, num);
-  }
-}
-document.addEventListener("scroll", function () {
+navBar.addEventListener("mouseover", () => {
+  console.log("hover");
   window.clearTimeout(isScrolling);
-  isScrolling = setTimeout(function () {
-    navBar.style.display = "none";
-  }, 2000);
 });
-
-function reveal() {
-  console.log("Pc");
+navBar.addEventListener("mouseout", () => {
+  hideNav();
+});
+const hideNav = () => {
+  window.clearTimeout(isScrolling);
+  isScrolling = setTimeout(() => {
+    navBar.style.display = "none";
+  }, 1000);
+};
+const reveal = () => {
   navBar.style.display = "flex";
-  const sec1Pos = sec1.getBoundingClientRect().top;
-  const sec2Pos = sec2.getBoundingClientRect().top;
-  const sec3Pos = sec3.getBoundingClientRect().top;
-  const sec4Pos = sec4.getBoundingClientRect().top;
   const windowHeight = window.innerHeight;
   const number = 150;
-  if (sec1Pos < windowHeight - number) {
-    sec1.style.display = "block";
-  } else {
-    sec1.style.display = "none";
-  }
-  if (sec2Pos < windowHeight - number) {
-    sec2.style.display = "block";
-  } else {
-    sec2.style.display = "none";
-  }
-  if (sec3Pos < windowHeight - number) {
-    sec3.style.display = "block";
-  } else {
-    sec3.style.display = "none";
-  }
-  if (sec4Pos < windowHeight - number) {
-    sec4.style.display = "flex";
-  } else {
-    sec4.style.display = "none";
-  }
-}
+  sectionsList.forEach((element) => {
+    if (element.getBoundingClientRect().top < windowHeight - number) {
+      if (sectionsList.indexOf(element) == 4) {
+        element.style.display = "flex";
+      } else {
+        element.style.display = "block";
+      }
+    } else {
+      element.style.display = "none";
+    }
+  });
+};
 
-function revealMOB() {
+const revealMOB = () => {
   navBar.style.display = "flex";
-  const sec1Pos = sec1.getBoundingClientRect().top;
-  const sec2Pos = sec2.getBoundingClientRect().top;
-  const sec3Pos = sec3.getBoundingClientRect().top;
-  const sec4Pos = sec4.getBoundingClientRect().top;
   const windowHeight = window.innerHeight;
   const number = 300;
-  if (sec1Pos + number < windowHeight && sec1Pos > -200) {
-    sec1.classList.add("active");
-  } else {
-    sec1.classList.remove("active");
-  }
-  if (sec2Pos + number < windowHeight && sec2Pos > -200) {
-    sec2.classList.add("active");
-  } else {
-    sec2.classList.remove("active");
-  }
-  if (sec3Pos + number < windowHeight && sec3Pos > -200) {
-    sec3.classList.add("active");
-  } else {
-    sec3.classList.remove("active");
-  }
-  if (sec4Pos + number < windowHeight && sec4Pos > -200) {
-    sec4.classList.add("active");
-  } else {
-    sec4.classList.remove("active");
-  }
-}
+  sectionsList.forEach((element) => {
+    if (element.getBoundingClientRect().top < windowHeight - number) {
+      element.classList.add("active");
+    } else {
+      element.classList.remove("active");
+    }
+  });
+};
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
   // get the form elements defined in your form HTML above
 
-  var form = document.getElementById("my-form");
+  const form = document.getElementById("my-form");
   // var button = document.getElementById("my-form-button");
-  var status = document.getElementById("status");
+  const status = document.getElementById("status");
 
   // Success and Error functions for after the form is submitted
 
-  function success() {
+  const success = () => {
     form.reset();
     status.classList.add("success");
     status.innerHTML = "Thanks!";
-  }
+  };
 
-  function error() {
+  const error = () => {
     status.classList.add("error");
     status.innerHTML = "Oops! There was a problem.";
-  }
+  };
 
   // handle the form submission event
 
-  form.addEventListener("submit", function (ev) {
+  form.addEventListener("submit", (ev) => {
     ev.preventDefault();
     var data = new FormData(form);
     ajax(form.method, form.action, data, success, error);
@@ -158,11 +127,11 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // helper function for sending an AJAX request
 
-function ajax(method, url, data, success, error) {
+const ajax = (method, url, data, success, error) => {
   var xhr = new XMLHttpRequest();
   xhr.open(method, url);
   xhr.setRequestHeader("Accept", "application/json");
-  xhr.onreadystatechange = function () {
+  xhr.onreadystatechange = () => {
     if (xhr.readyState !== XMLHttpRequest.DONE) return;
     if (xhr.status === 200) {
       success(xhr.response, xhr.responseType);
@@ -171,4 +140,14 @@ function ajax(method, url, data, success, error) {
     }
   };
   xhr.send(data);
-}
+};
+const options = {
+  strings: [" Developing Company", " Maintenance Company", " Design Company"],
+  typeSpeed: 50,
+  backSpeed: 30,
+  startDelay: 30,
+  shuffle: true,
+  loop: true,
+};
+
+const typed = new Typed(".title", options);

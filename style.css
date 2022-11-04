@@ -8,7 +8,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  height: 700vh;
+  height: 740vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@ body {
   margin: 0;
   background-color: #c1a5a9;
   padding: 0;
+  background-position: center;
 }
 
 #background {
@@ -31,13 +32,10 @@ body {
   z-index: -1;
 }
 .active {
-  margin: 0;
   margin-bottom: 50px;
   border: 2px solid gold;
   box-shadow: 0 0 10px #9ecaed;
   backdrop-filter: blur(50px);
-  width: 100vw;
-  height: 110vh;
 }
 /* ***********************************************
           HEADER & NAVIGATIONS
@@ -134,10 +132,10 @@ ul:hover li button {
 }
 
 #icon5 {
-  animation: slideFromRight2 1s ease-in 2.9s both;
+  animation: slideFromLeft 1s ease-in 2.9s both;
 }
 #icon6 {
-  animation: slideFromRight2 1s ease-in 2.9s both;
+  animation: slideFromLeft 1s ease-in 2.9s both;
 }
 /* ***********************************************
                  SECTIONS
@@ -148,12 +146,21 @@ section {
   margin-bottom: 60px;
   padding: 20px;
   width: 90%;
-  height: 110vh;
+  height: 120vh;
   border: 1px solid gold;
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  animation: wide 0.7s ease-out both;
 }
+#About,
+#projects,
+#contact {
+  animation: wideLEFT 1s ease-in-out both;
+}
+#cert,
+#skills {
+  animation: wideRIGHT 1s ease-in-out both;
+}
+
 .blackout {
   position: fixed;
   width: 100%;
@@ -173,7 +180,6 @@ section {
   display: none;
   flex-direction: column;
   align-items: center;
-  animation: wide 0.7s ease-out both;
 }
 /* section skill/projects */
 .projects,
@@ -188,9 +194,9 @@ section {
 .projects {
   /* justify-content: center; */
   gap: 150px;
-  row-gap: 50px;
+  row-gap: 60px;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 /* indviual skill/project */
 .project,
@@ -201,7 +207,12 @@ section {
   border-radius: 20px;
   border: 1px solid gold;
   backdrop-filter: blur(10px);
-  animation: appearLate 1s ease-out 0.5s both;
+  animation: appearLate 1s ease-out 0.7s both;
+}
+.skill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @keyframes appearLate {
   0% {
@@ -334,7 +345,7 @@ h1 {
   animation: slideFromLeft ease-out 1s both;
 }
 h3 {
-  animation: appearLate ease-out 1s 1.5s both;
+  animation: appearLate ease-out 1s 1.7s both;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -345,7 +356,7 @@ p {
 }
 .brand {
   -webkit-text-stroke: 0.5px black;
-  animation: slideFromRight2 ease-out 1s 1s both, Title 2.5s linear infinite;
+  animation: Right ease-out 1s 1s both, Title 2.5s linear infinite;
   font-size: 3rem;
 }
 label {
@@ -377,7 +388,7 @@ input {
   margin-top: 60px;
 }
 h2 span {
-  animation: slideFromRight2 ease-out 1s 1s both, Title 2.5s linear infinite;
+  animation: slideFromLeft ease-out 1s 1s both, Title 2.5s linear infinite;
   font-size: 6.5rem;
   -webkit-text-stroke: 0;
 }
@@ -387,7 +398,7 @@ section h2 {
   font-size: 2rem;
 }
 section p {
-  animation: slideFromRight2 ease-out 1s 0.5s both;
+  animation: slideFromLeft ease-out 1s 0.5s both;
 }
 .projects p,
 .cert p {
@@ -395,7 +406,8 @@ section p {
 }
 .project p,
 .cert p {
-  left: 25%;
+  text-align: center;
+  width: 100%;
   position: absolute;
   font-size: 1.5rem;
   z-index: -1;
@@ -411,10 +423,11 @@ section p {
 /* ***********************************************
                  BOOTSTRAP
 ********************************************** */
-.container {
+.containers {
+  width: 100%;
+  height: 100%;
   display: none;
   position: absolute;
-  transform: translate(20px, 15px);
   z-index: -1;
   transition: 0.5s;
   animation: slideFromTopProgress 1s ease-in both;
@@ -601,17 +614,81 @@ section p {
     height: 145vh;
     margin-bottom: 10px;
   }
-  .container,
-  .container-fluid,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xl {
-    padding-right: 35px;
-    padding-left: 0px;
+}
+/*LOADINGg*/
+.loader-wrapper {
+  background-color: #242f3f;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 200;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #fff;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
 /* ANIMATIONS */
 @keyframes slideFromLeft {
   0% {
@@ -676,7 +753,7 @@ section p {
   }
 }
 
-@keyframes slideFromRight2 {
+@keyframes Right {
   0% {
     transform: translateX(700px);
     opacity: 0%;
@@ -720,12 +797,20 @@ section p {
     opacity: 100%;
   }
 }
-@keyframes wide {
+@keyframes wideLEFT {
   0% {
-    width: 0;
+    transform: translateX(-1000px);
   }
   100% {
-    width: 90vw;
+    transform: translateX(60px);
+  }
+}
+@keyframes wideRIGHT {
+  0% {
+    transform: translateX(1600px);
+  }
+  100% {
+    transform: translateX(60px);
   }
 }
 @keyframes status {
@@ -754,15 +839,8 @@ section p {
   html {
     font-size: 10px;
   }
-  body {
-    background-image: url(images/backgroundPhone2.jpeg);
-    background-position: center;
-  }
   .header {
     width: 450px;
-  }
-  #background {
-    display: none;
   }
   .NAV {
     font-size: 9px;
@@ -785,18 +863,22 @@ section p {
   #cert {
     height: 146vh;
   }
-
   section h2 {
     font-size: 1.8rem;
   }
   .cert p,
   .projects p {
-    left: 13%;
-    font-size: 20px;
+    font-size: 16px;
+  }
+  #projects > a > img {
+    left: 0px;
+    width: 60px;
+    height: 60px;
+    animation: slideFromLeft 1s ease-in 0.7s both;
   }
   section,
   #contact {
-    margin-left: 15px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -818,29 +900,34 @@ section p {
   .projects img,
   .project,
   .skill {
-    width: 150px;
-    height: 150px;
-  }
-  #Skills img {
-    width: 150px;
-    height: 150px;
-  }
-  #Skills .skilltwo img {
-    width: 120px;
-    height: 120px;
-  }
-  .progress {
     width: 100px;
     height: 100px;
-    line-height: 100px;
   }
-  .container,
-  .container-fluid,
-  .container-lg,
-  .container-md,
-  .container-sm,
-  .container-xl {
-    padding-right: 44px;
-    padding-left: 0px;
+  #Skills img {
+    width: 90px;
+    height: 90px;
+  }
+  #Skills .skilltwo img {
+    width: 80px;
+    height: 80px;
+  }
+  .row .col-md-3 {
+    padding: 0;
+  }
+  .progress {
+    margin-left: 7px;
+    width: 70px;
+    height: 70px;
+    line-height: 72px;
+  }
+  .progress .progress-value {
+    font-size: 21px;
+  }
+  #About,
+  #projects,
+  #contact,
+  #cert,
+  #skills {
+    animation: none;
   }
 }

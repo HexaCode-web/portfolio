@@ -3,7 +3,7 @@ const clientWidth = window.matchMedia("(max-width: 570px)");
 const navBar = document.querySelector(".NAV");
 const sectionsList = Array.from(document.querySelectorAll(".section"));
 const skillsList = Array.from(document.querySelectorAll(".skill"));
-const progressList = Array.from(document.querySelectorAll(".container"));
+const progressList = Array.from(document.querySelectorAll(".containers"));
 const overlay = document.createElement("div");
 const cert1 = document.querySelector("#cert1");
 const cert2 = document.querySelector("#cert2");
@@ -29,19 +29,21 @@ cert2.addEventListener("click", () => {
 });
 overlay.addEventListener("click", () => {
   document.body.removeChild(overlay);
-  document.body.style.overflow = "auto";
 });
-window.addEventListener(
-  "scroll",
-  () => {
-    if (clientWidth.matches) {
+if (clientWidth.matches) {
+  window.setInterval(() => {
+    {
       revealMOB();
-    } else {
+    }
+  }, 200);
+} else {
+  window.setInterval(() => {
+    {
       reveal();
     }
-  },
-  true
-);
+  }, 800);
+}
+
 skillsList.forEach((element) => {
   element.addEventListener("mouseover", () => {
     progressList[skillsList.indexOf(element)].style.display = "block";
@@ -69,9 +71,8 @@ const hideNav = () => {
 const reveal = () => {
   navBar.style.display = "flex";
   const windowHeight = window.innerHeight;
-  const number = 150;
   sectionsList.forEach((element) => {
-    if (element.getBoundingClientRect().top < windowHeight - number) {
+    if (element.getBoundingClientRect().top < windowHeight) {
       if (sectionsList.indexOf(element) == 4) {
         element.style.display = "flex";
       } else {
@@ -86,11 +87,11 @@ const reveal = () => {
 const revealMOB = () => {
   navBar.style.display = "flex";
   const windowHeight = window.innerHeight;
-  const number = 300;
   sectionsList.forEach((element) => {
-    if (element.getBoundingClientRect().top < windowHeight - number) {
+    if (element.getBoundingClientRect().top < windowHeight) {
       element.classList.add("active");
-    } else {
+    }
+    if (element.getBoundingClientRect().top < -200) {
       element.classList.remove("active");
     }
   });

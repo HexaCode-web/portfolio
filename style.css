@@ -8,7 +8,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  height: 740vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,6 @@ body {
   padding: 0;
   background-position: center;
 }
-
 #background {
   width: 100%;
   height: 100%;
@@ -36,6 +35,9 @@ body {
   border: 2px solid gold;
   box-shadow: 0 0 10px #9ecaed;
   backdrop-filter: blur(50px);
+}
+.inactive {
+  transform: translatex(-200px);
 }
 .blackout {
   position: fixed;
@@ -57,7 +59,6 @@ body {
   height: 100vh;
   z-index: 1;
 }
-
 .NAV {
   position: fixed;
   z-index: 1;
@@ -76,13 +77,14 @@ body {
   font-weight: bold;
   margin: 0;
   padding: 0;
+  transition: all 0.5s;
 }
 .navlist li {
   transition: 0.5s;
   list-style: none;
 }
 .navlist button {
-  font-weight: 200;
+  font-weight: 201;
   display: block;
   text-decoration: none;
   font-size: 1.5rem;
@@ -90,7 +92,7 @@ body {
   background-color: transparent;
   border: none;
   padding: 5px;
-  transition: 0.5s;
+  transition: all 0.5s;
 }
 ul:hover li button {
   transform: scale(1.5);
@@ -102,6 +104,111 @@ ul:hover li button {
   transform: scale(2);
   opacity: 1;
   filter: blur(0);
+}
+.menu-btn__container {
+  z-index: 201;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+}
+.menu-btn__burger {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+  backdrop-filter: blur(20px);
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+  backdrop-filter: blur(20px);
+}
+.menu-btn__burger::before {
+  transform: translateY(-9px);
+}
+.menu-btn__burger::after {
+  transform: translateY(9px);
+}
+.menu-btn__container.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn__container.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn__container.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+.SideMenu {
+  z-index: 200;
+  display: flex;
+  left: 0;
+  top: 0;
+  width: 140px;
+  height: 100%;
+  position: fixed;
+  transition: all 0.5s ease-in-out;
+  flex-direction: column;
+  align-items: center;
+}
+.SideMenu > .logoMOB {
+  width: 60px;
+  height: 45px;
+  margin-top: 40px;
+  margin-bottom: 70px;
+}
+.SideMenu button {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.SideMenu > .navlistMOB {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  flex-direction: column;
+}
+.SideMenu > .navlistMOB img {
+  width: 40px;
+  transition: all 0.5s;
+}
+.SideMenu .HiddenText {
+  position: absolute;
+  transform: translate(10px, 42px);
+  font-size: 1rem;
+  display: inline;
+  transition: all 0.5s;
+  opacity: 0;
+}
+.clickArea {
+  z-index: 200;
+  position: fixed;
+  background-color: transparent;
+  width: calc(100% - 140px);
+  left: 140px;
+  height: 100%;
 }
 .HeaderText {
   display: flex;
@@ -617,6 +724,7 @@ section p {
   }
 }
 /* ANIMATIONS */
+
 @keyframes slideFromLeft {
   0% {
     transform: translateX(-700px);
@@ -627,7 +735,6 @@ section p {
     opacity: 100%;
   }
 }
-
 @keyframes Title {
   100%,
   0% {
@@ -766,10 +873,16 @@ section p {
     height: 920vh;
   }
   .NAV {
-    gap: 15%;
+    display: none;
   }
   .header {
     height: 160vh;
+  }
+  .navlist {
+    display: none;
+  }
+  .logo {
+    display: none;
   }
   #projects {
     height: 160vh;
@@ -803,8 +916,9 @@ section p {
   html {
     font-size: 10px;
   }
-  .header {
-    width: 450px;
+  html,
+  body {
+    overflow-x: hidden;
   }
   .NAV {
     font-size: 9px;
@@ -822,9 +936,10 @@ section p {
   }
   #Icons {
     max-width: 300px;
-    margin-left: 70px;
+    margin: 0;
     flex-wrap: wrap;
   }
+
   .certificates {
     row-gap: 60px;
   }
@@ -837,6 +952,9 @@ section p {
   .cert p,
   .projects p {
     font-size: 16px;
+  }
+  .SideBarBtn .HiddenText {
+    font-size: 1.5rem;
   }
   #projects > a > img {
     left: 0px;
@@ -853,8 +971,6 @@ section p {
     flex-direction: column;
     animation: none;
     transition: 0.5s;
-    margin-left: auto;
-    margin-right: auto;
   }
   .projects,
   #Skills {

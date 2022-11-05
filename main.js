@@ -1,4 +1,6 @@
-let isScrolling;
+// ========================================
+//               CONST AND VARS
+//==========================================
 const clientWidth = window.matchMedia("(max-width: 570px)");
 const navBar = document.querySelector(".NAV");
 const sectionsList = Array.from(document.querySelectorAll(".section"));
@@ -8,82 +10,39 @@ const overlay = document.createElement("div");
 const cert1 = document.querySelector("#cert1");
 const cert2 = document.querySelector("#cert2");
 const img = document.createElement("img");
+// ========================================
+//              CREATED ELEMENTS
+//==========================================
 overlay.appendChild(img);
 overlay.classList.add("blackout");
+// ========================================
+//               FUNCTIONS
+//==========================================
 const nav = (num, section) => {
   if (clientWidth.matches) {
     section.scrollIntoView({ behavior: "smooth" });
+    revealMOB;
   } else {
     window.scrollTo(0, num);
+    reveal();
   }
 };
-cert1.addEventListener("click", () => {
-  document.body.appendChild(overlay);
-  document.body.style.overflow = "hidden";
-  img.src = "images/cerfPROF.jpg";
-});
-cert2.addEventListener("click", () => {
-  document.body.appendChild(overlay);
-  document.body.style.overflow = "hidden";
-  img.src = "images/cerfCHAL.jpg";
-});
-overlay.addEventListener("click", () => {
-  document.body.removeChild(overlay);
-});
-if (clientWidth.matches) {
-  window.setInterval(() => {
-    {
-      revealMOB();
-    }
-  }, 200);
-} else {
-  window.setInterval(() => {
-    {
-      reveal();
-    }
-  }, 800);
-}
-
-skillsList.forEach((element) => {
-  element.addEventListener("mouseover", () => {
-    progressList[skillsList.indexOf(element)].style.display = "block";
-  });
-  element.addEventListener("mouseout", () => {
-    progressList[skillsList.indexOf(element)].style.display = "none";
-  });
-});
-document.addEventListener("scroll", () => {
-  hideNav();
-});
-navBar.addEventListener("mouseover", () => {
-  console.log("hover");
-  window.clearTimeout(isScrolling);
-});
-navBar.addEventListener("mouseout", () => {
-  hideNav();
-});
 const hideNav = () => {
-  window.clearTimeout(isScrolling);
-  isScrolling = setTimeout(() => {
-    navBar.style.display = "none";
-  }, 1000);
+  navBar.style.opacity = "0";
+  navBar.querySelector(".navlist").style.display = "none";
+  navBar.querySelector(".logo").style.opacity = "0";
+  navBar.style.backdropFilter = "none";
 };
 const reveal = () => {
-  navBar.style.display = "flex";
   const windowHeight = window.innerHeight;
   sectionsList.forEach((element) => {
     if (element.getBoundingClientRect().top < windowHeight) {
-      if (sectionsList.indexOf(element) == 4) {
-        element.style.display = "flex";
-      } else {
-        element.style.display = "block";
-      }
+      element.style.display = "flex";
     } else {
       element.style.display = "none";
     }
   });
 };
-
 const revealMOB = () => {
   navBar.style.display = "flex";
   const windowHeight = window.innerHeight;
@@ -96,7 +55,64 @@ const revealMOB = () => {
     }
   });
 };
+// ========================================
+//               EventListener
+//==========================================
+cert1.addEventListener("click", () => {
+  document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+  img.src = "images/cerfPROF.jpg";
+});
+cert2.addEventListener("click", () => {
+  document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+  img.src = "images/cerfCHAL.jpg";
+});
+overlay.addEventListener("click", () => {
+  document.body.removeChild(overlay);
+  document.body.style.overflow = "auto";
+});
+document.addEventListener("scroll", () => {
+  hideNav();
+});
+navBar.addEventListener("mouseout", () => {
+  hideNav();
+});
+navBar.addEventListener("mouseover", () => {
+  navBar.style.opacity = "1";
+  navBar.querySelector(".navlist").style.display = "flex";
+  navBar.querySelector(".logo").style.opacity = "1";
+  navBar.style.backdropFilter = "blur(50px)";
+});
+// ========================================
+//               if statements
+//==========================================
+if (clientWidth.matches) {
+  window.setInterval(() => {
+    {
+      revealMOB();
+    }
+  }, 200);
+} else {
+  window.setInterval(() => {
+    {
+      reveal();
+    }
+  }, 300);
+}
+// ========================================
+//               LOOPS
+//==========================================
+skillsList.forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    progressList[skillsList.indexOf(element)].style.display = "block";
+  });
+  element.addEventListener("mouseout", () => {
+    progressList[skillsList.indexOf(element)].style.display = "none";
+  });
+});
 
+//FOR THE FORM//
 window.addEventListener("DOMContentLoaded", () => {
   // get the form elements defined in your form HTML above
 

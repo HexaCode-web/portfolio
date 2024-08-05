@@ -372,18 +372,11 @@ textarea {
   border-bottom: 1.5px solid #fedb39;
   outline: none;
 }
-#status {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  transition: 0.5s;
+.sent {
+  text-align: center;
 }
-.success {
-  color: #75dbcd;
-  animation: status 4s ease forwards;
-}
-.failed {
-  color: red;
-  animation: status 4s ease forwards;
+.sent a {
+  text-decoration: none;
 }
 /* ***********************************************
                  IMAGES
